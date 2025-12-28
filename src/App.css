@@ -1,42 +1,398 @@
-#root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body {
+  width: 100%;
+  height: 100%;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
+.app {
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #f5f5f5;
+  padding: 20px 0;
+}
+
+.app-content {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 20px;
+}
+
+.auth-container {
+  width: 100%;
+  max-width: 420px;
+}
+
+.form-wrapper {
+  background: #ffffff;
+  border-radius: 8px;
+  padding: 32px;
+  width: 100%;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.form-wrapper h2 {
+  margin: 0 0 24px 0;
+  font-size: 24px;
+  font-weight: 600;
+  color: #000000;
   text-align: center;
 }
 
+.form-wrapper .description {
+  margin: 0 0 24px 0;
+  color: #666666;
+  font-size: 14px;
+  line-height: 1.5;
+  text-align: center;
+}
+
+.logo-container {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 24px;
+}
+
 .logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
+  height: 40px;
+  width: auto;
 }
 
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
+.form-group {
+  margin-bottom: 16px;
+  display: flex;
+  flex-direction: column;
+}
+
+.form-group label {
+  font-weight: 500;
+  color: #000000;
+  margin-bottom: 8px;
+  font-size: 12px;
+  display: none;
+}
+
+.input-wrapper {
+  display: flex;
+  align-items: center;
+  background-color: #ffffff;
+  border: 1px solid #d9d9d9;
+  border-radius: 8px;
+  transition: all 0.2s ease;
+  padding: 0 12px;
+  height: 44px;
+}
+
+.input-wrapper:hover {
+  border-color: #b8b8b8;
+}
+
+.input-wrapper:focus-within {
+  outline: none;
+  border-color: #667eea;
+  box-shadow: 0 0 0 2px rgba(102, 126, 234, 0.1);
+}
+
+.input-icon {
+  width: 20px;
+  height: 20px;
+  min-width: 20px;
+  flex-shrink: 0;
+  color: #999999;
+  opacity: 0.25;
+  margin-right: 8px;
+}
+
+.input-wrapper input {
+  flex: 1;
+  padding: 0;
+  border: none;
+  background: none;
+  font-size: 16px;
+  color: #000000;
+  outline: none;
+}
+
+.input-wrapper input::placeholder {
+  color: #999999;
+}
+
+.input-wrapper input:disabled {
+  background-color: transparent;
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+.input-wrapper.input-error {
+  border-color: #ff4d4f;
+  background-color: #fff1f0;
+}
+
+.input-wrapper.input-error:focus-within {
+  border-color: #ff4d4f;
+  box-shadow: 0 0 0 2px rgba(255, 77, 79, 0.1);
+}
+
+.input-wrapper.input-error .input-icon {
+  color: #ff4d4f;
+  opacity: 1;
+}
+
+.error-box {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding-top: 2px;
+  margin-bottom: 16px;
+}
+
+.error-text {
+  color: #ff4d4f;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.code-boxes {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 16px;
+  justify-content: center;
+}
+
+.code-box {
+  width: 60px;
+  height: 60px;
+  border: 1px solid #d9d9d9;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24px;
+  font-weight: 600;
+  color: #000000;
+  background-color: #ffffff;
+  font-family: 'Courier New', monospace;
+  transition: all 0.2s ease;
+  cursor: text;
+}
+
+.code-box:hover {
+  border-color: #b8b8b8;
+}
+
+.code-box.filled {
+  background-color: #f9fafb;
+  border-color: #d9d9d9;
+}
+
+.code-boxes-error .code-box {
+  border-color: #ff4d4f;
+  background-color: #fff1f0;
+}
+
+.submit-button,
+.get-new-button {
+  width: 100%;
+  padding: 8px 16px;
+  border: none;
+  border-radius: 8px;
+  font-size: 16px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  text-align: center;
+}
+
+.submit-button {
+  background-color: #667eea;
+  color: #ffffff;
+  margin-bottom: 8px;
+}
+
+.submit-button:hover:not(:disabled) {
+  background-color: #5568d3;
+  box-shadow: 0 2px 8px rgba(102, 126, 234, 0.3);
+}
+
+.submit-button:active:not(:disabled) {
+  background-color: #4a5bc8;
+}
+
+.submit-button:disabled {
+  background-color: #cccccc;
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+.get-new-button {
+  background-color: #667eea;
+  color: #ffffff;
+  margin-top: 16px;
+}
+
+.get-new-button:hover:not(:disabled) {
+  background-color: #5568d3;
+  box-shadow: 0 2px 8px rgba(102, 126, 234, 0.3);
+}
+
+.get-new-button:disabled {
+  background-color: #cccccc;
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+.back-button-icon {
+  position: absolute;
+  top: 32px;
+  left: 0;
+  width: 32px;
+  height: 32px;
+  padding: 0;
+  background: none;
+  border: none;
+  font-size: 24px;
+  color: #000000;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 6px;
+}
+
+.back-button-icon:hover:not(:disabled) {
+  background-color: #f0f0f0;
+}
+
+.back-button-icon:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.verify-form-wrapper {
+  position: relative;
+}
+
+.verify-form-header {
+  position: relative;
+  margin-bottom: 32px;
+}
+
+.verify-form-header .back-button-icon {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.verify-form-wrapper form {
+  display: flex;
+  flex-direction: column;
+}
+
+.verify-form-wrapper .code-boxes {
+  width: 100%;
+}
+
+.verify-form-wrapper .error-box {
+  margin-bottom: 16px;
+  padding-left: 0;
+  padding-right: 0;
+}
+
+.verify-form-wrapper .submit-button {
+  margin-bottom: 16px;
+  margin-left: 0;
+  margin-right: 0;
+}
+
+.verify-form-wrapper .get-new-button {
+  margin-top: 0;
+  margin-left: 0;
+  margin-right: 0;
+}
+
+@media (max-width: 480px) {
+  .app {
+    padding: 16px 0;
   }
-  to {
-    transform: rotate(360deg);
+
+  .app-content {
+    padding: 0 12px;
   }
-}
 
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
+  .form-wrapper {
+    padding: 24px 20px;
+    border-radius: 6px;
   }
-}
 
-.card {
-  padding: 2em;
-}
+  .form-wrapper h2 {
+    font-size: 20px;
+    margin-bottom: 16px;
+  }
 
-.read-the-docs {
-  color: #888;
+  .form-wrapper .description {
+    font-size: 13px;
+    margin-bottom: 16px;
+  }
+
+  .form-group {
+    margin-bottom: 12px;
+  }
+
+  .input-wrapper {
+    height: 40px;
+    padding: 0 10px;
+  }
+
+  .input-icon {
+    width: 18px;
+    height: 18px;
+    min-width: 18px;
+    margin-right: 6px;
+  }
+
+  .input-wrapper input {
+    font-size: 14px;
+  }
+
+  .logo {
+    height: 32px;
+  }
+
+  .logo-container {
+    margin-bottom: 16px;
+  }
+
+  .code-boxes {
+    gap: 6px;
+  }
+
+  .code-box {
+    width: 40px;
+    height: 40px;
+    font-size: 18px;
+  }
+
+  .submit-button,
+  .get-new-button {
+    padding: 10px 12px;
+    font-size: 14px;
+    margin-bottom: 8px;
+  }
+
+  .verify-form-header .back-button-icon {
+    width: 28px;
+    height: 28px;
+    font-size: 20px;
+  }
 }
